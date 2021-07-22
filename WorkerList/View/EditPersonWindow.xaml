@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkerList.View"
         mc:Ignorable="d"
-        Title="Увольнение" Height="350" Width="300">
+        Title="EditPersonWindow" Height="350" Width="250" Name="EditPersonWnd">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -15,10 +15,18 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Width="200">
-            <TextBlock Text="Дата увольнения"/>
-            <TextBox Text="{Binding DateOfDismissal}"/>
+            <TextBlock Text="Имя"/>
+            <TextBox Text="{Binding FirstName}" PreviewTextInput="PreviewTextBoxInput"/>
+            <TextBlock Text="Фамилия"/>
+            <TextBox Text="{Binding LastName}" PreviewTextInput="PreviewTextBoxInput"/>
+            <TextBlock Text="Отчество"/>
+            <TextBox Text="{Binding MiddleName}" PreviewTextInput="PreviewTextBoxInput"/>
+            <TextBlock Text="Должность"/>
+            <TextBox Text="{Binding Position}"/>
+            <TextBlock Text="Оклад"/>
+            <TextBox Text="{Binding Salary}" PreviewTextInput="PreviewNumInput"/>
         </StackPanel>
-        <Button Grid.Row="1" Content="Уволить"
+        <Button Grid.Row="1" Content="Изменить"
                 Command="{Binding EditPerson}"
                 CommandParameter="{Binding ElementName=EditPersonWnd}"/>
     </Grid>

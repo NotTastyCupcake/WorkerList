@@ -34,7 +34,7 @@ namespace WorkerList.Data
         /// <param name="salary"> Оклад </param>
         /// <param name="employmentDate"> Дата приема на работу </param>
         /// <returns> Строка состаяния выполениея метода </returns>
-        public static string CreatePerson(string firstName, string lastName, string middleName, string position, decimal salary, DateTime employmentDate)
+        public static string CreatePerson(string firstName, string lastName, string middleName, string position, decimal salary, DateTime? employmentDate)
         {
             string result = "Уже сушествует";
 
@@ -69,19 +69,37 @@ namespace WorkerList.Data
         /// <param name="oldPerson"> Модель сотрудника </param>
         /// <param name="NewDataOfDismissal"> Дата увольнения  </param>
         /// <returns>Строка состояние выполнения метода</returns>
-        public static string EditPerson(ModelPerson oldPerson, DateTime? NewDataOfDismissal)
+        public static string DismissalPerson(ModelPerson oldPerson, DateTime? newDataOfDismissal)
         {
             string result = "Такого сотрудника не существует";
 
-            using (Data.AppContext db = new Data.AppContext())
+            using (AppContext db = new AppContext())
             {
                 ModelPerson person = db.Persons.FirstOrDefault(p => p.Id == oldPerson.Id);
-                person.DateOfDismissal = NewDataOfDismissal;
+                person.DateOfDismissal = newDataOfDismissal;
                 db.SaveChanges();
-                result = $"Сотрудник {person.FirstName} {person.LastName} уволен!";
+                result = $"Сотрудник {person.FirstName} уволен с {newDataOfDismissal}!";
+            }
+            return result;
+        }
+        public static string EditPerson(ModelPerson oldPerson, string newFirstName, string newLastName, string newMiddleName, string newPosition, decimal newSalary)
+        {
+            string result = "Такого сотрудника не существует";
+
+            using (AppContext db = new AppContext())
+            {
+                ModelPerson person = db.Persons.FirstOrDefault(p => p.Id == oldPerson.Id);
+                person.FirstName = newFirstName;
+                person.LastName = newLastName;
+                person.MiddleName = newMiddleName;
+                person.Position = newPosition;
+                person.Salary = newSalary;
+                db.SaveChanges();
+                result = $"Сотрудник {person.FirstName} изменен!";
             }
             return result;
         }
         #endregion
+
     }
 }

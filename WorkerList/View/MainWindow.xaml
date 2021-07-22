@@ -18,18 +18,19 @@
         </StackPanel>
 
         <TabControl Grid.Row="1" SelectedItem="{Binding SelectedTabItem}">
-            <TabItem Name="PersonsList">
+            <TabItem Name="PersonsTab">
                 <TabItem.Header>
                     <TextBlock Text="Список сотрудников"/>
                 </TabItem.Header>
                 <TabItem.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Редактировать" Command="{Binding OpenEditItemWnd}"/>
-                        <MenuItem Header="Удалить" Command="{Binding DeleteItem}"/>
+                        <MenuItem Header="Дата увольнения" Command="{Binding OpenDismissalItemWnd}"/>
+                        <MenuItem Header="Изменить" Command="{Binding OpenEditItemWnd}"/>
                     </ContextMenu>
                 </TabItem.ContextMenu>
                 <ListView x:Name="ViewAllPerson" ItemsSource="{Binding AllPeople}"
-                          SelectedItem="{Binding SelectedPerson}">
+                          SelectedItem="{Binding SelectedPerson}"
+                          >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Имя"                                            
@@ -58,7 +59,7 @@
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Content="Новый сотрудник" Command="{Binding }"/>
+            <Button Content="Новый сотрудник" Command="{Binding OpenAddNewPersonWnd }"/>
         </StackPanel>
         
     </Grid>

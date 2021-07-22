@@ -3,7 +3,7 @@ using WorkerList.Model;
 
 namespace WorkerList.Data
 {
-    public class AppContext : DbContext 
+    public class AppContext : DbContext
     {
         public DbSet<ModelPerson> Persons { get; set; }
         public AppContext()
