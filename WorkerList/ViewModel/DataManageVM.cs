@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using WorkerList.Data;
 using WorkerList.Model;
@@ -13,13 +15,15 @@ namespace WorkerList.ViewModel
     public class DataManageVM : INotifyPropertyChanged
     {
         #region Все данные
-        private List<ModelPerson> allPeople = DataWorker.GetAllPerson();
 
-        public List<ModelPerson> AllPeople
+        private ICollectionView allPeople = CollectionViewSource.GetDefaultView(DataWorker.GetAllPerson());
+
+        public ICollectionView AllPeople
         {
             get { return allPeople; }
             set { allPeople = value; NotifyPropertyChanged("GetPeople"); }
         }
+        
 
         //Свойстра персоны
         public static string FirstName { get; set; }
@@ -106,7 +110,6 @@ namespace WorkerList.ViewModel
             {
                 return openDismissalItemWnd ?? new RelayCommand(obj =>
                 {
-                    string resultStr = "Ничего не выбрано";
                     //если сотрудник
                     if (SelectedTabItem.Name == "PersonsTab" && SelectedPerson != null)
                     {
@@ -124,7 +127,6 @@ namespace WorkerList.ViewModel
             {
                 return openEditItemWnd ?? new RelayCommand(obj =>
                 {
-                    string resultStr = "Ничего не выбрано";
                     //если сотрудник
                     if (SelectedTabItem.Name == "PersonsTab" && SelectedPerson != null)
                     {
@@ -252,7 +254,7 @@ namespace WorkerList.ViewModel
 
         private void UpdateAllPersonsView()
         {
-            AllPeople = DataWorker.GetAllPerson();
+            AllPeople = CollectionViewSource.GetDefaultView(DataWorker.GetAllPerson());
             MainWindow.AllPersonsView.ItemsSource = null;
             MainWindow.AllPersonsView.Items.Clear();
             MainWindow.AllPersonsView.ItemsSource = AllPeople;

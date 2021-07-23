@@ -12,11 +12,12 @@ namespace WorkerList.Data
         /// Приводит данные из базы данных в List
         /// </summary>
         /// <returns> Лист сотрудников из базы данных </returns>
-        public static List<ModelPerson> GetAllPerson()
+        public static ModelPerson[] GetAllPerson()
         {
+
             using (Data.AppContext db = new Data.AppContext())
             {
-                var result = db.Persons.ToList();
+                var result = db.Persons.ToArray();
                 return result;
             }
 

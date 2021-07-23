@@ -21,6 +21,7 @@ namespace WorkerList.View
         {
             DataContext = new DataManageVM();
             AllPersonsView = ViewAllPerson;
+            
         }
     }
 }
