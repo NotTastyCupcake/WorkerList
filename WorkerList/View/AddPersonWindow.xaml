@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkerList.View"
         mc:Ignorable="d"
-        Title="Прием на работу" Height="350" Width="250">
+        Title="Прием на работу" Height="350" Width="250" 
+        Name="AddPersonWnd">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -16,18 +17,20 @@
                     VerticalAlignment="Center"
                     Width="100">
             <TextBlock Text="Имя"/>
-            <TextBox Text="" x:Name="FirstName"/>
+            <TextBox Name="FirstNameBlock" Text="{Binding FirstName}" PreviewTextInput="PreviewTextBoxInput"/>
             <TextBlock Text="Фамилия"/>
-            <TextBox Text="" x:Name="LastName"/>
+            <TextBox Name="LastNameBlock" Text="{Binding LastName}" PreviewTextInput="PreviewTextBoxInput"/>
             <TextBlock Text="Отчество"/>
-            <TextBox Text="" x:Name="MiddleName"/>
+            <TextBox Name="MiddleNameBlock" Text="{Binding MiddleName}" PreviewTextInput="PreviewTextBoxInput"/>
             <TextBlock Text="Должность"/>
-            <TextBox Text="" Name="Position"/>
-            <TextBlock Text="Отдел"/>
-            <TextBox Text="" x:Name="Salary"/>
+            <TextBox Name="PositionBlock" Text="{Binding Position}"/>
+            <TextBlock Text="Оклад"/>
+            <TextBox Name="SalaryBlock" Text="{Binding Salary}" PreviewTextInput="PreviewNumInput"/>
             <TextBlock Text="Дата приема на работу"/>
-            <DatePicker x:Name="EmploymentDate"/>
+            <TextBox Name="EmploymentDateBlock" Text="{Binding EmploymentDate}" PreviewTextInput="PreviewDateInput"/>
         </StackPanel>
-        <Button Grid.Row ="1" Content="Добавить сотрудника"/>
+        <Button Grid.Row ="1" Content="Добавить сотрудника"
+                Command="{Binding AddNewPerson}"
+                CommandParameter="{Binding ElementName=AddPersonWnd}"/>
     </Grid>
 </Window>

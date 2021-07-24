@@ -56,6 +56,7 @@
                 <TabItem.Header>
                     <TextBlock Text="Статистика"/>
                 </TabItem.Header>
+                
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">

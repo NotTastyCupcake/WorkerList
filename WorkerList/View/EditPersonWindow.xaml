@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkerList.View"
         mc:Ignorable="d"
-        Title="EditPersonWindow" Height="350" Width="250" Name="EditPersonWnd">
+        Title="EditPersonWindow" Height="350" Width="250" 
+        Name="EditPersonWnd">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

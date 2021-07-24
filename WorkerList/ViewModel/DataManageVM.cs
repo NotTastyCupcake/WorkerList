@@ -88,29 +88,39 @@ namespace WorkerList.ViewModel
                 {
                     Window wnd = obj as Window;
                     string resultStr = "";
-                    if (FirstName == null || FirstName.Replace(" ", "").Length == 0)
+                    bool corFirstName = FirstName == null || FirstName.Replace(" ", "").Length == 0;
+                    bool corLastName = LastName == null || LastName.Replace(" ", "").Length == 0;
+                    bool corMiddleName = MiddleName == null || MiddleName.Replace(" ", "").Length == 0;
+                    bool corPosition = Position == null || Position.Replace(" ", "").Length == 0;
+                    bool corSalary = Salary == 0;
+                    bool corEmploymentDate = EmploymentDate == null;
+
+                    if (corFirstName || corLastName || corMiddleName || corPosition|| corSalary || corEmploymentDate)
                     {
-                        SetRedBlockControll(wnd, "FirstNameBlock");
-                    }
-                    if (LastName == null || LastName.Replace(" ", "").Length == 0)
-                    {
-                        SetRedBlockControll(wnd, "LastNameBlock");
-                    }
-                    if (MiddleName == null || MiddleName.Replace(" ", "").Length == 0)
-                    {
-                        SetRedBlockControll(wnd, "MiddleNameBlock");
-                    }
-                    if (Position == null || Position.Replace(" ", "").Length == 0)
-                    {
-                        SetRedBlockControll(wnd, "PositionBlock");
-                    }
-                    if (Salary == 0)
-                    {
-                        SetRedBlockControll(wnd, "SalaryBlock");
-                    }
-                    if (EmploymentDate == DateTime.Now)
-                    {
-                        MessageBox.Show("Укажите дату");
+                        if (corFirstName)
+                        {
+                            SetRedBlockControll(wnd, "FirstNameBlock");
+                        }
+                        if (corLastName)
+                        {
+                            SetRedBlockControll(wnd, "LastNameBlock");
+                        }
+                        if (corMiddleName)
+                        {
+                            SetRedBlockControll(wnd, "MiddleNameBlock");
+                        }
+                        if (corPosition)
+                        {
+                            SetRedBlockControll(wnd, "PositionBlock");
+                        }
+                        if (corSalary)
+                        {
+                            SetRedBlockControll(wnd, "SalaryBlock");
+                        }
+                        if (corEmploymentDate)
+                        {
+                            SetRedBlockControll(wnd, "EmploymentDateBlock");
+                        }
                     }
                     else
                     {
@@ -297,6 +307,14 @@ namespace WorkerList.ViewModel
             MainWindow.AllPersonsView.Items.Clear();
             MainWindow.AllPersonsView.ItemsSource = AllPeople;
             MainWindow.AllPersonsView.Items.Refresh();
+        }
+        #endregion
+
+        #region Статистика
+        public dynamic averageSalary = Data.DataWorker.GetAllPerson().Average(person => person.Salary);
+        public dynamic AverageSalary
+        {
+            get { return averageSalary; }
         }
         #endregion
 
