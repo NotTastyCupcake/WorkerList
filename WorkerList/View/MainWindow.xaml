@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Фильтр" Margin="5"/>
-            <TextBox Text="{Binding FilterText}" Width="200" Margin="5"/>
+            <TextBox Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" Width="200" Margin="5"/>
         </StackPanel>
 
         <TabControl Grid.Row="1" SelectedItem="{Binding SelectedTabItem}">

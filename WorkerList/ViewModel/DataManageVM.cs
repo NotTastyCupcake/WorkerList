@@ -12,7 +12,7 @@ using WorkerList.View;
 
 namespace WorkerList.ViewModel
 {
-    public class DataManageVM : INotifyPropertyChanged
+    public class DataManageVM : DependencyObject, INotifyPropertyChanged
     {
         #region Все данные
 
@@ -37,6 +37,44 @@ namespace WorkerList.ViewModel
         //Свойства для выделенных элементов
         public TabItem SelectedTabItem { get; set; }
         public static ModelPerson SelectedPerson { get; set; }
+
+
+
+        public string FilterText
+        {
+            get { return (string)GetValue(FilterTextProperty); }
+            set { SetValue(FilterTextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FilterText.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FilterTextProperty =
+            DependencyProperty.Register("FilterText", typeof(string), typeof(DataManageVM), new PropertyMetadata("", FilterText_Changed));
+
+        private static void FilterText_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var currend = d as DataManageVM;
+            if (currend != null)
+            {
+                currend.AllPeople.Filter = null;
+                currend.AllPeople.Filter = currend.FilterPerson;
+            }
+        }
+
+        public DataManageVM()
+        {
+            AllPeople.Filter = FilterPerson;
+        }
+
+        private bool FilterPerson(object obj)
+        {
+            bool result = true;
+            ModelPerson person = obj as ModelPerson;
+            if (!string.IsNullOrWhiteSpace(FilterText) && person != null && !person.FirstName.Contains(FilterText) && !person.LastName.Contains(FilterText))
+            {
+                result = false;
+            }
+            return result;
+        }
 
         #endregion
 
