@@ -311,11 +311,10 @@ namespace WorkerList.ViewModel
         #endregion
 
         #region Статистика
-        public dynamic averageSalary = Data.DataWorker.GetAllPerson().Average(person => person.Salary);
-        public dynamic AverageSalary
-        {
-            get { return averageSalary; }
-        }
+        //Средняя зарплата
+        public dynamic AverageSalary { get; } = DataWorker.GetAllPerson().Average(person => person.Salary);
+        //Количество сотрудников
+        public int CountPerson { get; } = Data.DataWorker.GetAllPerson().Count();
         #endregion
 
         #region Доп. методы

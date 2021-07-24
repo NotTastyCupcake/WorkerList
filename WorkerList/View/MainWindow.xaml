@@ -56,7 +56,15 @@
                 <TabItem.Header>
                     <TextBlock Text="Статистика"/>
                 </TabItem.Header>
-                
+                <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="auto">
+                    <TextBlock Text="Средняя зарплата между всеми сотрудниками:"/>
+                    <TextBlock Text="{Binding AverageSalary}"/>
+                    <TextBlock Text="Количество сотрудников:"/>
+                    <TextBlock Text="{Binding CountPerson}"/>
+                </StackPanel>
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
