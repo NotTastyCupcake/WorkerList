@@ -186,6 +186,19 @@ namespace WorkerList.ViewModel
         }
         #endregion
 
+        private RelayCommand unloadingPersons;
+        public RelayCommand UnloadingPersons
+        {
+            get
+            {
+                return unloadingPersons ?? new RelayCommand(obj =>
+                {
+                    string result = DataWorker.CreatFileUnloadingData();
+                    ShowMessageToUser(result);
+                });
+            }
+        }
+
         #region Команды изминения
         private RelayCommand dismissalPerson;
         public RelayCommand DismissalPerson

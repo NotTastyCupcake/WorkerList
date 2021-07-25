@@ -69,6 +69,7 @@
         </TabControl>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
             <Button Content="Новый сотрудник" Command="{Binding OpenAddNewPersonWnd }"/>
+            <Button Content="Выгрузка данных" Command="{Binding UnloadingPersons}"/>
         </StackPanel>
         
     </Grid>

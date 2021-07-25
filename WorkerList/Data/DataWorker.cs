@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 using WorkerList.Model;
 
 namespace WorkerList.Data
@@ -102,5 +106,45 @@ namespace WorkerList.Data
         }
         #endregion
 
+        #region Выгрузку
+        public static string CreatFileUnloadingData()
+        {
+            string result;
+            try
+            {
+                XDocument xdoc = new XDocument();
+                // создаем корневой элемент
+                XElement persons = new XElement("persons");
+
+                foreach (var pers in GetAllPerson())
+                {
+                    // создаем первый элемент
+                    XElement person = new XElement("person");
+                    //создаем отрибут
+                    XAttribute personFirstName = new XAttribute("firstName", pers.FirstName);
+                    XElement personLastName = new XElement("lastName", pers.LastName);
+                    XElement personMiddleName = new XElement("middleName", pers.MiddleName);
+
+                    // добавляем атрибут и элементы в первый элемент
+                    person.Add(personFirstName, personLastName, personMiddleName);
+                    // добавляем в корневой элемент
+                    persons.Add(person);
+                }
+
+                // добавляем корневой элемент в документ
+                xdoc.Add(persons);
+                //сохраняем документ
+                xdoc.Save("d:/person.xml");
+
+                result = "Файл создан, выгрузка завершина. Расположен в корневом диске d";
+
+            }
+            catch(Exception ex)
+            {
+                result = ex.Message;
+            }
+            return result;
+        }
+        #endregion
     }
 }
