@@ -38,44 +38,6 @@ namespace WorkerList.ViewModel
         public TabItem SelectedTabItem { get; set; }
         public static ModelPerson SelectedPerson { get; set; }
 
-
-
-        public string FilterText
-        {
-            get { return (string)GetValue(FilterTextProperty); }
-            set { SetValue(FilterTextProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for FilterText.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty FilterTextProperty =
-            DependencyProperty.Register("FilterText", typeof(string), typeof(DataManageVM), new PropertyMetadata("", FilterText_Changed));
-
-        private static void FilterText_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var currend = d as DataManageVM;
-            if (currend != null)
-            {
-                currend.AllPeople.Filter = null;
-                currend.AllPeople.Filter = currend.FilterPerson;
-            }
-        }
-
-        public DataManageVM()
-        {
-            AllPeople.Filter = FilterPerson;
-        }
-
-        private bool FilterPerson(object obj)
-        {
-            bool result = true;
-            ModelPerson person = obj as ModelPerson;
-            if (!string.IsNullOrWhiteSpace(FilterText) && person != null && !person.FirstName.Contains(FilterText) && !person.LastName.Contains(FilterText))
-            {
-                result = false;
-            }
-            return result;
-        }
-
         #endregion
 
         #region Команды добавления
@@ -185,19 +147,6 @@ namespace WorkerList.ViewModel
             }
         }
         #endregion
-
-        private RelayCommand unloadingPersons;
-        public RelayCommand UnloadingPersons
-        {
-            get
-            {
-                return unloadingPersons ?? new RelayCommand(obj =>
-                {
-                    string result = DataWorker.CreatFileUnloadingData();
-                    ShowMessageToUser(result);
-                });
-            }
-        }
 
         #region Команды изминения
         private RelayCommand dismissalPerson;
@@ -330,6 +279,45 @@ namespace WorkerList.ViewModel
         public int CountPerson { get; } = Data.DataWorker.GetAllPerson().Count();
         #endregion
 
+        #region Фильтрация
+        //Поле для фильтрации
+        public string FilterText
+        {
+            get { return (string)GetValue(FilterTextProperty); }
+            set { SetValue(FilterTextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FilterText.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FilterTextProperty =
+            DependencyProperty.Register("FilterText", typeof(string), typeof(DataManageVM), new PropertyMetadata("", FilterText_Changed));
+
+        private static void FilterText_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var currend = d as DataManageVM;
+            if (currend != null)
+            {
+                currend.AllPeople.Filter = null;
+                currend.AllPeople.Filter = currend.FilterPerson;
+            }
+        }
+
+        public DataManageVM()
+        {
+            AllPeople.Filter = FilterPerson;
+        }
+
+        private bool FilterPerson(object obj)
+        {
+            bool result = true;
+            ModelPerson person = obj as ModelPerson;
+            if (!string.IsNullOrWhiteSpace(FilterText) && person != null && !person.FirstName.Contains(FilterText) && !person.LastName.Contains(FilterText))
+            {
+                result = false;
+            }
+            return result;
+        } 
+        #endregion
+
         #region Доп. методы
         private void ShowMessageToUser(string message)
         {
@@ -346,6 +334,20 @@ namespace WorkerList.ViewModel
             }
         }
 
+
+
+        private RelayCommand unloadingPersons;
+        public RelayCommand UnloadingPersons
+        {
+            get
+            {
+                return unloadingPersons ?? new RelayCommand(obj =>
+                {
+                    string result = DataWorker.CreatFileUnloadingData();
+                    ShowMessageToUser(result);
+                });
+            }
+        }
         #endregion
     }
 }

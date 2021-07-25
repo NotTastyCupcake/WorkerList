@@ -13,9 +13,9 @@ namespace WorkerList.Data
     {
         #region Вывод
         /// <summary>
-        /// Приводит данные из базы данных в List
+        /// Приводит данные из базы данных в массив данных
         /// </summary>
-        /// <returns> Лист сотрудников из базы данных </returns>
+        /// <returns> Массив сотрудников из базы данных </returns>
         public static ModelPerson[] GetAllPerson()
         {
 
@@ -69,7 +69,7 @@ namespace WorkerList.Data
 
         #region Редактирование
         /// <summary>
-        /// Добавление даты увольнения сотрудника к строке
+        /// Добавление/изминение даты увольнения сотрудника к строке
         /// </summary>
         /// <param name="oldPerson"> Модель сотрудника </param>
         /// <param name="NewDataOfDismissal"> Дата увольнения  </param>
@@ -87,6 +87,17 @@ namespace WorkerList.Data
             }
             return result;
         }
+
+        /// <summary>
+        /// Изменение данных о сотруднике
+        /// </summary>
+        /// <param name="oldPerson">Старые данные</param>
+        /// <param name="newFirstName">Новое имя</param>
+        /// <param name="newLastName">Новая фамилия</param>
+        /// <param name="newMiddleName">Новое отчество</param>
+        /// <param name="newPosition">Новая должность</param>
+        /// <param name="newSalary">Новый оклад</param>
+        /// <returns>Строка - результат работы программы</returns>
         public static string EditPerson(ModelPerson oldPerson, string newFirstName, string newLastName, string newMiddleName, string newPosition, decimal newSalary)
         {
             string result = "Такого сотрудника не существует";
@@ -107,8 +118,14 @@ namespace WorkerList.Data
         #endregion
 
         #region Выгрузку
+
+        /// <summary>
+        /// Создает .xml файл с данными из бд. Я хотел сделать ввод расположение, но уже горят сроки
+        /// </summary>
+        /// <returns>Строку - результат работы метода</returns>
         public static string CreatFileUnloadingData()
         {
+            //Результат работы
             string result;
             try
             {
