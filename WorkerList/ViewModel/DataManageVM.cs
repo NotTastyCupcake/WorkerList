@@ -38,6 +38,9 @@ namespace WorkerList.ViewModel
         public TabItem SelectedTabItem { get; set; }
         public static ModelPerson SelectedPerson { get; set; }
 
+        //Свойства для выгрузки
+        public static string UnloadingAddres { get; set; } = "person.xml";
+
         #endregion
 
         #region Команды добавления
@@ -99,6 +102,23 @@ namespace WorkerList.ViewModel
         }
         #endregion
 
+        private RelayCommand unloadingPersons;
+        public RelayCommand UnloadingPersons
+        {
+            get
+            {
+                return unloadingPersons ?? new RelayCommand(obj =>
+                {
+                    Window window = obj as Window;
+                    string result = DataWorker.CreatFileUnloadingData(UnloadingAddres);
+                    ShowMessageToUser(result);
+                    SetNullValuesToProperties();
+                    window.Close();
+                }
+                );
+            }
+        }
+
         #region Команды открытия окон
         private RelayCommand openAddNewPersonWnd;
         public RelayCommand OpenAddNewPersonWnd
@@ -144,6 +164,22 @@ namespace WorkerList.ViewModel
                     }
                 }
                     );
+            }
+        }
+
+
+        private RelayCommand openUnloadingPersonsWnd;
+        public RelayCommand OpenUnloadingPersonsWnd
+        {
+            get
+            {
+                return openUnloadingPersonsWnd ?? new RelayCommand(obj =>
+                {
+                    //                    string result = DataWorker.CreatFileUnloadingData();
+                    //                    ShowMessageToUser(result);
+
+                    OpenUploadingPersonsWindowMethod();
+                });
             }
         }
         #endregion
@@ -211,6 +247,7 @@ namespace WorkerList.ViewModel
             AddPersonWindow newPersonWindow = new AddPersonWindow();
             SetCenterPositionAndOpen(newPersonWindow);
         }
+
         /// <summary>
         /// Открытие окна добавления даты увольнения сотрудника
         /// </summary>
@@ -219,10 +256,18 @@ namespace WorkerList.ViewModel
             DismissalPersonWindow dismissalPersonWindow = new DismissalPersonWindow(person);
             SetCenterPositionAndOpen(dismissalPersonWindow);
         }
+
+
         private void OpenEditPersonWindowMethod(ModelPerson person)
         {
             EditPersonWindow dismissalPersonWindow = new EditPersonWindow(person);
             SetCenterPositionAndOpen(dismissalPersonWindow);
+        }
+
+        private void OpenUploadingPersonsWindowMethod()
+        {
+            UploadingPersonsWindow uploadingPersonsWindow = new UploadingPersonsWindow();
+            SetCenterPositionAndOpen(uploadingPersonsWindow);
         }
 
         /// <summary>
@@ -235,6 +280,9 @@ namespace WorkerList.ViewModel
             window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             window.ShowDialog();
         }
+
+
+
         #endregion
 
         #region Обновление
@@ -331,21 +379,6 @@ namespace WorkerList.ViewModel
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-
-
-        private RelayCommand unloadingPersons;
-        public RelayCommand UnloadingPersons
-        {
-            get
-            {
-                return unloadingPersons ?? new RelayCommand(obj =>
-                {
-                    string result = DataWorker.CreatFileUnloadingData();
-                    ShowMessageToUser(result);
-                });
             }
         }
         #endregion

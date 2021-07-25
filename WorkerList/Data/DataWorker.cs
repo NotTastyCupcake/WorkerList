@@ -123,7 +123,7 @@ namespace WorkerList.Data
         /// Создает .xml файл с данными из бд. Я хотел сделать ввод расположение, но уже горят сроки
         /// </summary>
         /// <returns>Строку - результат работы метода</returns>
-        public static string CreatFileUnloadingData()
+        public static string CreatFileUnloadingData(string addressToSave)
         {
             //Результат работы
             string result;
@@ -155,9 +155,9 @@ namespace WorkerList.Data
                 // добавляем корневой элемент в документ
                 xdoc.Add(persons);
                 //сохраняем документ
-                xdoc.Save("d:/person.xml");
+                xdoc.Save($"{addressToSave}");
 
-                result = "Файл создан, выгрузка завершина. Расположен в корневом диске d";
+                result = $"Файл создан, выгрузка завершина. Расположен {addressToSave}";
 
             }
             catch(Exception ex)
