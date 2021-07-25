@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -39,7 +40,8 @@ namespace WorkerList.ViewModel
         public static ModelPerson SelectedPerson { get; set; }
 
         //Свойства для выгрузки
-        public static string UnloadingAddres { get; set; } = "person.xml";
+        public static string UnloadingAddres { get; set; } = "d:/persons.xml" ;
+
 
         #endregion
 

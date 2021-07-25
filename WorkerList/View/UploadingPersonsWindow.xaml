@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkerList.View"
         mc:Ignorable="d"
-        Title="UploadingPersonsWindow" Height="250" Width="250"
+        Title="Выгрузка" Height="200" Width="250"
         Name="UnloadingPersonsWnd">
     <Grid>
         <Grid.RowDefinitions>
@@ -15,9 +15,10 @@
         <StackPanel Grid.Row="0" Orientation="Vertical"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Width="230" Height="164">
+                    Width="230">
             <TextBlock Text="Путь к файлу" HorizontalAlignment="Center"/>
-            <TextBox Text="{Binding UnloadingAddres}" Height="32" HorizontalAlignment="Center" Name="UnloadingAddresTextBox" Width="200" />
+            <TextBox Text="{Binding UnloadingAddres}" HorizontalAlignment="Center" Name="UnloadingAddresTextBox" Width="200" />
+            <Button  Click="Browse" Content="Обзор" HorizontalAlignment="Right" Margin="10"/>
         </StackPanel>
         <Button Grid.Row ="1" Content="Сохранить"
                 Command="{Binding UnloadingPersons}"
