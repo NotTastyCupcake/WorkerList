@@ -101,26 +101,6 @@ namespace WorkerList.ViewModel
         }
         #endregion
 
-        private RelayCommand uploadingBrowse;
-        public RelayCommand UploadingBrowse
-        {
-            get
-            {
-                return uploadingBrowse ?? new RelayCommand(obj =>
-                {
-                    SaveFileDialog saveFile = new SaveFileDialog();
-                    saveFile.Filter = "Расширяемый язык разметки(*.xml)| *.xml";
-                    if (saveFile.ShowDialog() == true)
-                    {
-                        string result = DataWorker.CreatFileUnloadingData(saveFile.FileName);
-                        ShowMessageToUser(result);
-                        SetNullValuesToProperties();
-                    }
-                }
-                );
-            }
-        }
-
         #region Команды открытия окон
         private RelayCommand openAddNewPersonWnd;
         public RelayCommand OpenAddNewPersonWnd
@@ -346,10 +326,33 @@ namespace WorkerList.ViewModel
                 result = false;
             }
             return result;
+        }
+        #endregion
+
+        #region Выгрузка
+        private RelayCommand uploadingBrowse;
+        public RelayCommand UploadingBrowse
+        {
+            get
+            {
+                return uploadingBrowse ?? new RelayCommand(obj =>
+                {
+                    SaveFileDialog saveFile = new SaveFileDialog();
+                    saveFile.Filter = "Расширяемый язык разметки(*.xml)| *.xml";
+                    if (saveFile.ShowDialog() == true)
+                    {
+                        string result = DataWorker.CreatFileUnloadingData(saveFile.FileName);
+                        ShowMessageToUser(result);
+                        SetNullValuesToProperties();
+                    }
+                }
+                );
+            }
         } 
         #endregion
 
-        #region Доп. методы
+        #region Доп. Методы
+
         private void ShowMessageToUser(string message)
         {
             MessageWindow messageView = new MessageWindow(message);
