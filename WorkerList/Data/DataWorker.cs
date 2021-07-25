@@ -116,9 +116,10 @@ namespace WorkerList.Data
         #region Выгрузку
 
         /// <summary>
-        /// Создает .xml файл с данными из бд. Я хотел сделать ввод расположение, но уже горят сроки
+        /// Выгрузка из базы данных
         /// </summary>
-        /// <returns>Строку - результат работы метода</returns>
+        /// <param name="addressToSave">Путь для сохранения</param>
+        /// <returns>Результат работы программы</returns>
         public static string CreatFileUnloadingData(string addressToSave)
         {
             //Результат работы
@@ -153,7 +154,7 @@ namespace WorkerList.Data
                 //сохраняем документ
                 xdoc.Save($"{addressToSave}");
 
-                result = $"Файл создан, выгрузка завершина. Расположен {addressToSave}";
+                result = $"Файл создан, выгрузка завершина. Расположение: {addressToSave}";
 
             }
             catch (Exception ex)
