@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using WorkerList.ViewModel;
-using WorkerList.Model;
+﻿using System;
 using System.Text.RegularExpressions;
-using System;
+using System.Windows;
+using WorkerList.Model;
+using WorkerList.ViewModel;
 
 namespace WorkerList.View
 {
@@ -15,7 +15,7 @@ namespace WorkerList.View
         {
             InitializeComponent();
             DataContext = new DataManageVM();
-            
+
             DataManageVM.SelectedPerson = personToDismissal;
             DataManageVM.DateOfDismissal = Convert.ToDateTime(personToDismissal.DateOfDismissal);
         }

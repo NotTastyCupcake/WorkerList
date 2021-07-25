@@ -40,7 +40,7 @@ namespace WorkerList.View
         {
             Regex regex = new Regex(@"\b(?<month>\d{1,2})/(?<day>\d{1,2})/(?<year>\d{2,4})\b");
             e.Handled = regex.IsMatch(e.Text);
-        } 
+        }
         #endregion
     }
 }

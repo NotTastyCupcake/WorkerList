@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using WorkerList.Model;
 
 namespace WorkerList.Data
@@ -147,7 +143,7 @@ namespace WorkerList.Data
                     XElement personDateOfDismissal = new XElement("dateOfDismissal", pers.DateOfDismissal);
 
                     // добавляем атрибут и элементы в первый элемент
-                    person.Add(personFirstName, personLastName, personMiddleName,personPosition,personEmploymentDate,personDateOfDismissal);
+                    person.Add(personFirstName, personLastName, personMiddleName, personPosition, personEmploymentDate, personDateOfDismissal);
                     // добавляем в корневой элемент
                     persons.Add(person);
                 }
@@ -160,7 +156,7 @@ namespace WorkerList.Data
                 result = $"Файл создан, выгрузка завершина. Расположен {addressToSave}";
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 result = ex.Message;
             }

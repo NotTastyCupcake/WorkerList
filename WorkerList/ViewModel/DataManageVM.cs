@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -24,7 +23,7 @@ namespace WorkerList.ViewModel
             get { return allPeople; }
             set { allPeople = value; NotifyPropertyChanged("GetPeople"); }
         }
-        
+
 
         //Свойстра персоны
         public static string FirstName { get; set; }
@@ -59,7 +58,7 @@ namespace WorkerList.ViewModel
                     bool corSalary = Salary == 0;
                     bool corEmploymentDate = EmploymentDate == null;
 
-                    if (corFirstName || corLastName || corMiddleName || corPosition|| corSalary || corEmploymentDate)
+                    if (corFirstName || corLastName || corMiddleName || corPosition || corSalary || corEmploymentDate)
                     {
                         if (corFirstName)
                         {
@@ -165,7 +164,7 @@ namespace WorkerList.ViewModel
                     if (SelectedPerson != null)
                     {
 
-                        resultStr = DataWorker.DismissalPerson(SelectedPerson,DateOfDismissal);
+                        resultStr = DataWorker.DismissalPerson(SelectedPerson, DateOfDismissal);
 
                         UpdateAllDataView();
                         SetNullValuesToProperties();
@@ -190,7 +189,7 @@ namespace WorkerList.ViewModel
                     if (SelectedPerson != null)
                     {
 
-                        resultStr = DataWorker.EditPerson(SelectedPerson, FirstName, LastName, MiddleName, Position,Salary);
+                        resultStr = DataWorker.EditPerson(SelectedPerson, FirstName, LastName, MiddleName, Position, Salary);
 
                         UpdateAllDataView();
                         SetNullValuesToProperties();
@@ -348,7 +347,7 @@ namespace WorkerList.ViewModel
                 }
                 );
             }
-        } 
+        }
         #endregion
 
         #region Доп. Методы
