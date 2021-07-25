@@ -39,9 +39,6 @@ namespace WorkerList.ViewModel
         public TabItem SelectedTabItem { get; set; }
         public static ModelPerson SelectedPerson { get; set; }
 
-        //Свойства для выгрузки
-        public static string UnloadingAddres { get; set; } = "d:/persons.xml" ;
-
 
         #endregion
 
@@ -104,18 +101,21 @@ namespace WorkerList.ViewModel
         }
         #endregion
 
-        private RelayCommand unloadingPersons;
-        public RelayCommand UnloadingPersons
+        private RelayCommand uploadingBrowse;
+        public RelayCommand UploadingBrowse
         {
             get
             {
-                return unloadingPersons ?? new RelayCommand(obj =>
+                return uploadingBrowse ?? new RelayCommand(obj =>
                 {
-                    Window window = obj as Window;
-                    string result = DataWorker.CreatFileUnloadingData(UnloadingAddres);
-                    ShowMessageToUser(result);
-                    SetNullValuesToProperties();
-                    window.Close();
+                    SaveFileDialog saveFile = new SaveFileDialog();
+                    saveFile.Filter = "Расширяемый язык разметки(*.xml)| *.xml";
+                    if (saveFile.ShowDialog() == true)
+                    {
+                        string result = DataWorker.CreatFileUnloadingData(saveFile.FileName);
+                        ShowMessageToUser(result);
+                        SetNullValuesToProperties();
+                    }
                 }
                 );
             }
@@ -170,20 +170,6 @@ namespace WorkerList.ViewModel
         }
 
 
-        private RelayCommand openUnloadingPersonsWnd;
-        public RelayCommand OpenUnloadingPersonsWnd
-        {
-            get
-            {
-                return openUnloadingPersonsWnd ?? new RelayCommand(obj =>
-                {
-                    //                    string result = DataWorker.CreatFileUnloadingData();
-                    //                    ShowMessageToUser(result);
-
-                    OpenUploadingPersonsWindowMethod();
-                });
-            }
-        }
         #endregion
 
         #region Команды изминения
@@ -266,11 +252,6 @@ namespace WorkerList.ViewModel
             SetCenterPositionAndOpen(dismissalPersonWindow);
         }
 
-        private void OpenUploadingPersonsWindowMethod()
-        {
-            UploadingPersonsWindow uploadingPersonsWindow = new UploadingPersonsWindow();
-            SetCenterPositionAndOpen(uploadingPersonsWindow);
-        }
 
         /// <summary>
         /// Отображение модального окна поверх других, по центру 
