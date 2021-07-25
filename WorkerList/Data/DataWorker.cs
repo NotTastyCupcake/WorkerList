@@ -141,9 +141,13 @@ namespace WorkerList.Data
                     XAttribute personFirstName = new XAttribute("firstName", pers.FirstName);
                     XElement personLastName = new XElement("lastName", pers.LastName);
                     XElement personMiddleName = new XElement("middleName", pers.MiddleName);
+                    XElement personPosition = new XElement("position", pers.Position);
+                    XElement personSalary = new XElement("salary", pers.Salary);
+                    XElement personEmploymentDate = new XElement("employmentDate", pers.EmploymentDate);
+                    XElement personDateOfDismissal = new XElement("dateOfDismissal", pers.DateOfDismissal);
 
                     // добавляем атрибут и элементы в первый элемент
-                    person.Add(personFirstName, personLastName, personMiddleName);
+                    person.Add(personFirstName, personLastName, personMiddleName,personPosition,personEmploymentDate,personDateOfDismissal);
                     // добавляем в корневой элемент
                     persons.Add(person);
                 }
