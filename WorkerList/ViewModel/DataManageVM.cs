@@ -6,11 +6,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
-using NotTastyCupcake.WorkerList.WorkerList.DesktopUI.Data;
-using NotTastyCupcake.WorkerList.WorkerList.DesktopUI.Model;
-using NotTastyCupcake.WorkerList.WorkerList.DesktopUI.View;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Data;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Model;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.View;
 
-namespace NotTastyCupcake.WorkerList.WorkerList.DesktopUI.ViewModel
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.ViewModel
 {
     public class DataManageVM : DependencyObject, INotifyPropertyChanged
     {

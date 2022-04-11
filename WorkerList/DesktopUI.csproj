@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <RootNamespace>NotTastyCupcake.WorkerList.DesktopUI</RootNamespace>
+    <RootNamespace>NotTastyCupcake.WorkerList.UserInterface.DesktopUI</RootNamespace>
     <AssemblyName>DesktopUI</AssemblyName>
   </PropertyGroup>
 

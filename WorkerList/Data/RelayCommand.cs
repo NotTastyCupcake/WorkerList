@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace NotTastyCupcake.WorkerList.WorkerList.DesktopUI.Data
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Data
 {
     public class RelayCommand : ICommand
     {

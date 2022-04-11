@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 using System.Windows;
-using NotTastyCupcake.WorkerList.WorkerList.DesktopUI.ViewModel;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.ViewModel;
 
-namespace NotTastyCupcake.WorkerList.WorkerList.DesktopUI.View
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.View
 {
     /// <summary>
     /// Логика взаимодействия для AddPerson.xaml

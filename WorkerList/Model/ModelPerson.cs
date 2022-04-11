@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NotTastyCupcake.WorkerList.WorkerList.DesktopUI.Model
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Model
 {
     public class ModelPerson
     {

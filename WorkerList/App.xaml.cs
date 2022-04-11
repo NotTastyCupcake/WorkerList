@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace NotTastyCupcake.WorkerList.WorkerList.DesktopUI
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI
 {
     /// <summary>
     /// Interaction logic for App.xaml

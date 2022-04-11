@@ -1,7 +1,7 @@
-﻿<Application x:Class="NotTastyCupcake.WorkerList.WorkerList.DesktopUI.App"
+﻿<Application x:Class="NotTastyCupcake.WorkerList.UserInterface.DesktopUI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:NotTastyCupcake.WorkerList.WorkerList.DesktopUI"
+             xmlns:local="clr-namespace:NotTastyCupcake.WorkerList.UserInterface.DesktopUI"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
          

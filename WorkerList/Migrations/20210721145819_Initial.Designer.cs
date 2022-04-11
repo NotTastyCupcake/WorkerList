@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NotTastyCupcake.WorkerList.WorkerList.DesktopUI.Data;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Data;
 
-namespace NotTastyCupcake.WorkerList.WorkerList.DesktopUI.Migrations
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Migrations
 {
     [DbContext(typeof(Data.AppContext))]
     [Migration("20210721145819_Initial")]
