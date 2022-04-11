@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows;
-using WorkerList.Model;
-using WorkerList.ViewModel;
+using NotTastyCupcake.WorkerList.WorkerList.DesktopUI.Model;
+using NotTastyCupcake.WorkerList.WorkerList.DesktopUI.ViewModel;
 
-namespace WorkerList.View
+namespace NotTastyCupcake.WorkerList.WorkerList.DesktopUI.View
 {
     /// <summary>
     /// Логика взаимодействия для DismissalPersonWindow.xaml
