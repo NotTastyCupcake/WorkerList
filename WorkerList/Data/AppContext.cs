@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WorkerList.Model;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Model;
 
-namespace WorkerList.Data
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Data
 {
     public class AppContext : DbContext
     {

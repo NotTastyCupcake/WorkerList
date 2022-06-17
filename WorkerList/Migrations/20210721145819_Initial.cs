@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace WorkerList.Migrations
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Migrations
 {
     public partial class Initial : Migration
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WorkerList.Model
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Model
 {
     public class ModelPerson
     {
@@ -12,6 +12,6 @@ namespace WorkerList.Model
         public decimal Salary { get; set; }
         public DateTime? EmploymentDate { get; set; }
         public DateTime? DateOfDismissal { get; set; }
-
     }
+
 }

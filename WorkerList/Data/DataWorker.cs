@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Xml.Linq;
-using WorkerList.Model;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Model;
 
-namespace WorkerList.Data
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Data
 {
     public static class DataWorker
     {

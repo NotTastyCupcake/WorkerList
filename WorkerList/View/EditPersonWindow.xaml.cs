@@ -1,9 +1,9 @@
 ﻿using System.Text.RegularExpressions;
 using System.Windows;
-using WorkerList.Model;
-using WorkerList.ViewModel;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.Model;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.ViewModel;
 
-namespace WorkerList.View
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.View
 {
     /// <summary>
     /// Логика взаимодействия для EditPersonWindow.xaml

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WorkerList.View
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.View
 {
     /// <summary>
     /// Логика взаимодействия для MessangeWindow.xaml

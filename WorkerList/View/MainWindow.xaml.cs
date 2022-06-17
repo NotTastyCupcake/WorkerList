@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using WorkerList.ViewModel;
+using NotTastyCupcake.WorkerList.UserInterface.DesktopUI.ViewModel;
 
-namespace WorkerList.View
+namespace NotTastyCupcake.WorkerList.UserInterface.DesktopUI.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
